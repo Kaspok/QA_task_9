@@ -6,6 +6,7 @@ import com.demoqa.utility.RandomArrayElement;
 import com.github.javafaker.Faker;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
+import org.openqa.selenium.remote.DesiredCapabilities;
 
 import java.text.DecimalFormat;
 
@@ -31,7 +32,12 @@ public class TestStudentRegistrationForm {
 
     @BeforeAll
     static void setup() {
+        DesiredCapabilities capabilities = new DesiredCapabilities();
+        capabilities.setCapability("enableVNC", true);
+
+        Configuration.browserCapabilities = capabilities;
         Configuration.startMaximized = true;
+        Configuration.remote = "https://user1:1234@selenoid.autotests.cloud/wd/hub/";
     }
 
     @Test
