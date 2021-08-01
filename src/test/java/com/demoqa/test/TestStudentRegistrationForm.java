@@ -44,7 +44,7 @@ public class TestStudentRegistrationForm {
     }
 
     @AfterEach
-    public void tearDown(){
+    public void tearDown() {
         Attach.screenshotAs("Last screenshot");
         Attach.browserConsoleLogs();
         Attach.pageSource();
