@@ -13,6 +13,7 @@ def allureVersion = "2.13.9",
 
 allure {
     version = allureVersion
+    aspectjVersion = '1.9.4'
     autoconfigure = true
     aspectjweaver = true
     configuration = "testImplementation"
