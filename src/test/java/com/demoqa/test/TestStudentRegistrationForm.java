@@ -2,8 +2,10 @@ package com.demoqa.test;
 
 import com.codeborne.selenide.Configuration;
 import com.demoqa.pages.PagesStudentRegistrationForm;
+import com.demoqa.utility.Attach;
 import com.demoqa.utility.RandomArrayElement;
 import com.github.javafaker.Faker;
+import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 import org.openqa.selenium.remote.DesiredCapabilities;
@@ -34,10 +36,19 @@ public class TestStudentRegistrationForm {
     static void setup() {
         DesiredCapabilities capabilities = new DesiredCapabilities();
         capabilities.setCapability("enableVNC", true);
+        capabilities.setCapability("enableVideo", true);
 
         Configuration.browserCapabilities = capabilities;
         Configuration.startMaximized = true;
         Configuration.remote = "https://user1:1234@selenoid.autotests.cloud/wd/hub/";
+    }
+
+    @AfterEach
+    public void tearDown(){
+        Attach.screenshotAs("Last screenshot");
+        Attach.browserConsoleLogs();
+        Attach.pageSource();
+        Attach.addVideo();
     }
 
     @Test
